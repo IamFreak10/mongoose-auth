@@ -1,13 +1,20 @@
 import config from './config/index';
 import app from './app';
-import connectDB from './db/db';
+import DB from './db/db';
+import { User } from './models/user.model';
 
 async function main() {
   try {
-    await connectDB();
-    app.listen(config.port, () => {
-      console.log(`Server running on port ${config.port}`);
-    });
+    await DB();
+    // const user = await User.create({
+    //   name: 'Rahul',
+    //   email: 'r@r.com',
+    //   age: 20,
+    // });
+
+    const allUser=await User.find();
+
+    console.log(allUser);
   } catch (error) {
     console.log(error);
   }

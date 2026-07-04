@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import config from '../config/index';
-const connectDB = async () => {
+const DB = async () => {
   try {
     await mongoose.connect(config.db_url as string);
     console.log('Connected to MongoDB');
@@ -11,4 +11,4 @@ const connectDB = async () => {
   }
 };
 
-export default connectDB;
+export default DB;
